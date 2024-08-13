@@ -35,19 +35,32 @@ class $modify(MyEffectGameObject, EffectGameObject) {
 
 	void setIcon(std::string texture){
 		
-		CCSprite* newSpr = CCSprite::createWithSpriteFrameName("edit_eCollisionBlock01_001.png");
-		setTexture(newSpr->getTexture());
-		setTextureRect(newSpr->getTextureRect());
+		if(CCSprite* newSpr = CCSprite::createWithSpriteFrameName("edit_eCollisionBlock01_001.png")) {
+			setTexture(newSpr->getTexture());
+			setTextureRect(newSpr->getTextureRect());
+		}
+		else{
+			log::info("missing collision block sprite");
+		}
+		
+		setCascadeColorEnabled(true);
+		setCascadeOpacityEnabled(true);
 
-		queueInMainThread([this, texture]() {
-			
-			if (CCLabelBMFont* label = getChildOfType<CCLabelBMFont>(this, 0)) {
-				label->setVisible(false);
-			}
-
-			auto spr = CCSprite::create(texture.c_str());
+		if(auto spr = CCSprite::create(texture.c_str())) {
 			spr->setScale(0.9f);
 			addChildAtPosition(spr, Anchor::Center);
-		});
+			
+			scheduleOnce(schedule_selector(MyEffectGameObject::getLabel), 0);
+		}
+		else{
+			log::info("missing modifier sprite");
+		}
+		
+	}
+
+	void getLabel(float dt){
+		if (CCLabelBMFont* label = getChildOfType<CCLabelBMFont>(this, 0)) {
+			label->setVisible(false);
+		}
 	}
 };
