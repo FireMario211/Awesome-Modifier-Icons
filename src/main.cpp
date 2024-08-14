@@ -35,12 +35,14 @@ class $modify(MyEffectGameObject, EffectGameObject) {
 
 	void setIcon(std::string texture){
 		
-		if(CCSprite* newSpr = CCSprite::createWithSpriteFrameName("edit_eCollisionBlock01_001.png")) {
-			setTexture(newSpr->getTexture());
-			setTextureRect(newSpr->getTextureRect());
-		}
-		else{
-			log::info("missing collision block sprite");
+		if (!Mod::get()->getSettingValue<bool>("solid-border")) {
+			if(CCSprite* newSpr = CCSprite::createWithSpriteFrameName("edit_eCollisionBlock01_001.png")) {
+				setTexture(newSpr->getTexture());
+				setTextureRect(newSpr->getTextureRect());
+			}
+			else{
+				log::info("missing collision block sprite");
+			}
 		}
 		
 		setCascadeColorEnabled(true);
@@ -59,8 +61,16 @@ class $modify(MyEffectGameObject, EffectGameObject) {
 	}
 
 	void getLabel(float dt){
+
 		if (CCLabelBMFont* label = getChildOfType<CCLabelBMFont>(this, 0)) {
-			label->setVisible(false);
+			if (Mod::get()->getSettingValue<bool>("show-letter")) {
+				label->setPosition({2, getContentHeight()});
+				label->setScale(0.3f);
+				label->setAnchorPoint({0, 1});
+			}
+			else {
+				label->setVisible(false);
+			}
 		}
 	}
 };

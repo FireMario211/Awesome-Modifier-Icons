@@ -8,7 +8,7 @@
 	},
 	"id": "alphalaneous.awesome_modifier_icons",
 	"name": "Awesome Modifier Icons",
-	"version": "v1.0.1",
+	"version": "v1.0.2",
 	"developer": "Alphalaneous",
 	"description": "Makes D, J, S, H, and F blocks have icons instead of a letter!",
 	"resources": {
@@ -20,5 +20,19 @@
         "homepage": "https://twitter.com/alphalaneous",
         "source": "https://github.com/Alphalaneous/Awesome-Modifier-Icons",
         "community": "https://discord.gg/Txn2CA5dHF"
-    }
+    },
+	"settings": {
+		"solid-border": {
+			"name": "Solid Border",
+			"description": "Makes the border of the blocks solid instead of dotted",
+			"type": "bool",
+			"default": false
+		},
+		"show-letter": {
+			"name": "Show Letters",
+			"description": "Show the letters instead of hiding them",
+			"type": "bool",
+			"default": false
+		}
+	}
 }
