@@ -8,7 +8,7 @@
 	},
 	"id": "alphalaneous.awesome_modifier_icons",
 	"name": "Awesome Modifier Icons",
-	"version": "v1.0.2",
+	"version": "v1.0.3",
 	"developer": "Alphalaneous",
 	"description": "Makes D, J, S, H, and F blocks have icons instead of a letter!",
 	"resources": {
@@ -33,6 +33,12 @@
 			"description": "Show the letters instead of hiding them",
 			"type": "bool",
 			"default": false
+		},
+		"move-f-block": {
+			"name": "Move F block",
+			"description": "Moves the F block to be next to the other modifier blocks rather than separated by the force blocks.",
+			"type": "bool",
+			"default": true
 		}
 	}
 }
