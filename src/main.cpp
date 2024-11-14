@@ -63,7 +63,7 @@ class $modify(MyEffectGameObject, EffectGameObject) {
 
 	void getLabel(float dt){
 
-		if (CCLabelBMFont* label = getChildOfType<CCLabelBMFont>(this, 0)) {
+		if (CCLabelBMFont* label = this->getChildByType<CCLabelBMFont>(0)) {
 			if (Mod::get()->getSettingValue<bool>("show-letter")) {
 				label->setPosition({2, getContentHeight()});
 				label->setScale(0.3f);
@@ -85,9 +85,9 @@ class $modify(MyEditButtonBar, EditButtonBar) {
 			int hIndex = 0;
 
 			for (CCNode* item : CCArrayExt<CCNode*>(items)) {
-				if(ButtonSprite* bspr = getChildOfType<ButtonSprite>(item, 0)){
-					if(EffectGameObject* ego = getChildOfType<EffectGameObject>(bspr, 0)){
-						if(CCLabelBMFont* label = getChildOfType<CCLabelBMFont>(ego, 0)){
+				if(ButtonSprite* bspr = item->getChildByType<ButtonSprite>(0)){
+					if(EffectGameObject* ego = bspr->getChildByType<EffectGameObject>(0)){
+						if(CCLabelBMFont* label = ego->getChildByType<CCLabelBMFont>(0)){
 							std::string text = std::string(label->getString());
 							if(text == "H"){
 								hIndex = idx;
