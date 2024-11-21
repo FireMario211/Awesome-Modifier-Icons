@@ -85,14 +85,15 @@ class $modify(MyEditButtonBar, EditButtonBar) {
 			int hIndex = 0;
 
 			for (CCNode* item : CCArrayExt<CCNode*>(items)) {
-				if(ButtonSprite* bspr = item->getChildByType<ButtonSprite>(0)){
-					if(EffectGameObject* ego = bspr->getChildByType<EffectGameObject>(0)){
-						if(CCLabelBMFont* label = ego->getChildByType<CCLabelBMFont>(0)){
+				if (!item) continue;
+				if (ButtonSprite* bspr = item->getChildByType<ButtonSprite>(0)) {
+					if (EffectGameObject* ego = bspr->getChildByType<EffectGameObject>(0)) {
+						if (CCLabelBMFont* label = ego->getChildByType<CCLabelBMFont>(0)) {
 							std::string text = std::string(label->getString());
-							if(text == "H"){
+							if (text == "H") {
 								hIndex = idx;
 							}
-							if(text == "F"){
+							if (text == "F") {
 								items->removeObject(item, false);
 								items->insertObject(item, hIndex + 1);
 							}
