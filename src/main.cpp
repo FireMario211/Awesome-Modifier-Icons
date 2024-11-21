@@ -82,25 +82,27 @@ class $modify(MyEditButtonBar, EditButtonBar) {
 
 		if (Mod::get()->getSettingValue<bool>("move-f-block")) {
 			int idx = 0;
-			int hIndex = 0;
+			int hIndex = -1;
+
+			Ref<CCObject> fItem = nullptr;
 
 			for (CCNode* item : CCArrayExt<CCNode*>(items)) {
-				if (!item) continue;
-				if (ButtonSprite* bspr = item->getChildByType<ButtonSprite>(0)) {
-					if (EffectGameObject* ego = bspr->getChildByType<EffectGameObject>(0)) {
-						if (CCLabelBMFont* label = ego->getChildByType<CCLabelBMFont>(0)) {
-							std::string text = std::string(label->getString());
-							if (text == "H") {
-								hIndex = idx;
-							}
-							if (text == "F") {
-								items->removeObject(item, false);
-								items->insertObject(item, hIndex + 1);
-							}
-						}
+				if (CreateMenuItem* menuItem = typeinfo_cast<CreateMenuItem*>(item)) {
+					if (menuItem->m_objectID == 2866) {
+						fItem = menuItem;
+						if (hIndex != -1) break;
+					}
+					if (menuItem->m_objectID == 1859) {
+						hIndex = idx;
+						if (fItem) break;
 					}
 				}
 				idx++;
+			}
+
+			if (fItem) {
+				items->removeObject(fItem, false);
+				items->insertObject(fItem, hIndex + 1);
 			}
 		}
 

@@ -1,3 +1,6 @@
+# 1.0.6
+- Unstupid bad code
+
 # 1.0.5
 - Maybe fix a crash with null items (how does this even happen?)
 
