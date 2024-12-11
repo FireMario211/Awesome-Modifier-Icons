@@ -1,3 +1,6 @@
+# 1.0.7
+- Android32 Support
+
 # 1.0.6
 - Unstupid bad code
 
