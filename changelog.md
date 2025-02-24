@@ -1,3 +1,6 @@
+# 1.0.8
+- Add tags
+
 # 1.0.7
 - Android32 Support
 
