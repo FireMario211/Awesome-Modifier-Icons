@@ -8,7 +8,7 @@
 	},
 	"id": "alphalaneous.awesome_modifier_icons",
 	"name": "Awesome Modifier Icons",
-	"version": "v1.0.8",
+	"version": "v1.0.9",
 	"developer": "Alphalaneous",
 	"description": "Makes D, J, S, H, and F blocks have icons instead of a letter!",
 	"resources": {
@@ -40,5 +40,8 @@
 			"type": "bool",
 			"default": true
 		}
-	}
+	},
+	"tags": [
+		"editor", "enhancement"
+	]
 }
