@@ -1,3 +1,6 @@
+# 1.0.10
+- iOS support
+
 # 1.0.8 and 1.0.9
 - Add tags
 
